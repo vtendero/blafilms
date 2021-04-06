@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import './App.css'
-import placeholderImg from './placeholder.png'
-import { ReactComponent as ChevronLeft } from './chevron-left.svg'
-import { ReactComponent as ChevronRight } from './chevron-right.svg'
+import '../styles/App.css'
+import placeholderImg from '../images/placeholder.png'
+import { ReactComponent as ChevronLeft } from '../images/chevron-left.svg'
+import { ReactComponent as ChevronRight } from '../images/chevron-right.svg'
 
 function App() {
   const [searchResult, setSearchResult] = useState()
