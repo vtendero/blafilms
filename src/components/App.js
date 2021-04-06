@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import '../styles/App.css'
-import placeholderImg from '../images/placeholder.png'
 import { ReactComponent as ChevronLeft } from '../images/chevron-left.svg'
 import { ReactComponent as ChevronRight } from '../images/chevron-right.svg'
+import ResultList from './ResultList'
 
 function App() {
   const [searchResult, setSearchResult] = useState()
@@ -36,20 +36,7 @@ function App() {
           <div className="chevron">
             <ChevronLeft />
           </div>
-          <div className="search-results-list">
-            {searchResult.Search.map(result => (
-              <div key={result.imdbID} className="search-item">
-                <img
-                  src={result.Poster === 'N/A' ? placeholderImg : result.Poster}
-                  alt="poster"
-                />
-                <div className="search-item-data">
-                  <div className="title">{result.Title}</div>
-                  <div className="meta">{`${result.Type} | ${result.Year}`}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ResultList searchResult={searchResult} />
           <div className="chevron">
             <ChevronRight />
           </div>
