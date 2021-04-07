@@ -3,32 +3,40 @@ import '../styles/App.css'
 import { ReactComponent as ChevronLeft } from '../images/chevron-left.svg'
 import { ReactComponent as ChevronRight } from '../images/chevron-right.svg'
 import ResultList from './ResultList'
+import Finder from './Finder'
+import fetchApi from '../services/fetchApi'
 
 function App() {
   const [searchResult, setSearchResult] = useState()
+  const [searchInput, setSearchInput] = useState('')
+  const [searchCriteria, setSearchCriteria] = useState({
+    search: '',
+  })
 
   useEffect(() => {
-    const search = async () => {
-      const response = await fetch(
-        'http://www.omdbapi.com/?apikey=a461e386&s=king',
-      )
-
-      const data = await response.json()
-
-      if (!searchResult) {
-        setSearchResult(data)
+    const data = async () => {
+      if (searchCriteria.search) {
+        setSearchResult(await fetchApi(searchCriteria.search))
       }
     }
+    data()
+  }, [searchCriteria])
 
-    search()
-  })
+  const handleInput = data => {
+    setSearchInput(data.value)
+  }
+
+  const handleSearch = () => {
+    setSearchCriteria({ search: searchInput })
+  }
 
   return (
     <div className="App">
-      <div className="search">
-        <input type="text" placeholder="Search..." />
-        <button>Search</button>
-      </div>
+      <Finder
+        searchInput={searchInput}
+        handleInput={handleInput}
+        handleSearch={handleSearch}
+      />
       {!searchResult ? (
         <p>No results yet</p>
       ) : (

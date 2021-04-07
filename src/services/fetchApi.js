@@ -5,7 +5,7 @@ const fetchApi = async search => {
 
   const data = await response.json()
 
-  if (data.response === 'True') {
+  if (data.Response === 'True') {
     return data
   } else return false
 }
