@@ -1,8 +1,7 @@
 const Finder = props => {
+  let searchValue
   const handleChange = ev => {
-    props.handleInput({
-      value: ev.target.value,
-    })
+    searchValue = ev.target.value
   }
 
   const handleOnSubmit = ev => {
@@ -10,18 +9,13 @@ const Finder = props => {
   }
 
   const handleOnClick = () => {
-    props.handleSearch()
+    props.handleSearch(searchValue)
   }
 
   return (
     <form className="search" onSubmit={handleOnSubmit}>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={props.searchInput}
-        onChange={handleChange}
-      />
-      <input type="button" value="Search" onClick={handleOnClick} />
+      <input type="text" placeholder="Search..." onChange={handleChange} />
+      <button onClick={handleOnClick}>Search</button>
     </form>
   )
 }
