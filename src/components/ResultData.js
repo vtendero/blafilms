@@ -7,7 +7,7 @@ const ResultData = props => {
         src={
           props.result.Poster === 'N/A' ? placeholderImg : props.result.Poster
         }
-        alt={`Poster de ${props.result.Title}`}
+        alt={`${props.result.Title} poster`}
       />
       <h5 className="title">{props.result.Title}</h5>
       <p className="meta">{`${props.result.Type} | ${props.result.Year}`}</p>
