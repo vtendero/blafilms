@@ -1,6 +1,5 @@
 const Finder = props => {
   const handleChange = ev => {
-    console.log(ev)
     props.handleInput({
       value: ev.target.value,
     })
