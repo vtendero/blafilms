@@ -7,24 +7,34 @@ import ResultList from './ResultList'
 function App() {
   const [searchResult, setSearchResult] = useState()
   const [searchInput, setSearchInput] = useState('')
+  const [searchPage, setSearchPage] = useState(1)
 
   useEffect(() => {
     const data = async () => {
       if (searchInput) {
-        setSearchResult(await fetchApi(searchInput))
+        setSearchResult(await fetchApi(searchInput, searchPage))
       }
     }
     data()
-  }, [searchInput])
+  }, [searchInput, searchPage])
 
   const handleSearch = value => {
     setSearchInput(value)
+    setSearchPage(1)
+  }
+
+  const handlePage = page => {
+    setSearchPage(page)
   }
 
   return (
     <div className="App">
-      <Finder searchInput={searchInput} handleSearch={handleSearch} />
-      <ResultList searchResult={searchResult} />
+      <Finder handleSearch={handleSearch} />
+      <ResultList
+        searchResult={searchResult}
+        handlePage={handlePage}
+        searchPage={searchPage}
+      />
     </div>
   )
 }
