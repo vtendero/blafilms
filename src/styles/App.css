@@ -24,6 +24,7 @@ button {
   margin-top: 50px;
   display: grid;
   grid-template-columns: 25% 40% 10% 25%;
+  align-content: center;
 }
 
 .search-results {
@@ -52,6 +53,7 @@ button {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 50%);
+  padding: 0;
 }
 
 .search-item {
