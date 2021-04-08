@@ -34,6 +34,7 @@ function App() {
         searchResult={searchResult}
         handlePage={handlePage}
         searchPage={searchPage}
+        searchInput={searchInput}
       />
     </div>
   )

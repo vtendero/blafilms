@@ -3,8 +3,10 @@ import PreviousPage from './PreviousPage'
 import NextPage from './NextPage'
 
 const MovieList = props => {
-  if (!props.searchResult) {
-    return <p>No results yet</p>
+  if (props.searchResult === undefined) {
+    return <p className="reply-message">No results yet</p>
+  } else if (props.searchResult === false) {
+    return <p className="reply-message">No results for {props.searchInput}</p>
   }
 
   const resultItem = props.searchResult.Search.map(result => {
