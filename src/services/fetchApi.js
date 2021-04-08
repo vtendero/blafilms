@@ -1,6 +1,6 @@
 const fetchApi = async (search, page) => {
   const response = await fetch(
-    `http://www.omdbapi.com/?apikey=a461e386&s=${search}&page=${page}`,
+    `https://www.omdbapi.com/?apikey=a461e386&s=${search}&page=${page}`,
   )
 
   const data = await response.json()
