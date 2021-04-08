@@ -88,3 +88,8 @@ button {
 .search-item .search-item-data .meta {
   font-size: 14px;
 }
+
+.loader,
+.reply-message {
+  text-align: center;
+}
