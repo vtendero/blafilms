@@ -3,16 +3,20 @@ import '../styles/App.css'
 import fetchApi from '../services/fetchApi'
 import Finder from './Finder'
 import MovieList from './MovieList'
+import Loader from './Loader'
 
 function App() {
   const [searchResult, setSearchResult] = useState()
   const [searchInput, setSearchInput] = useState('')
   const [searchPage, setSearchPage] = useState(1)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     const search = async () => {
       if (searchInput) {
+        setIsLoading(true)
         setSearchResult(await fetchApi(searchInput, searchPage))
+        setIsLoading(false)
       }
     }
     search()
@@ -30,12 +34,16 @@ function App() {
   return (
     <div className="App">
       <Finder handleSearch={handleSearch} />
-      <MovieList
-        searchResult={searchResult}
-        handlePage={handlePage}
-        searchPage={searchPage}
-        searchInput={searchInput}
-      />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <MovieList
+          searchResult={searchResult}
+          handlePage={handlePage}
+          searchPage={searchPage}
+          searchInput={searchInput}
+        />
+      )}
     </div>
   )
 }
