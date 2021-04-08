@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../styles/App.css'
 import fetchApi from '../services/fetchApi'
 import Finder from './Finder'
-import ResultList from './ResultList'
+import MovieList from './MovieList'
 
 function App() {
   const [searchResult, setSearchResult] = useState()
@@ -10,12 +10,12 @@ function App() {
   const [searchPage, setSearchPage] = useState(1)
 
   useEffect(() => {
-    const data = async () => {
+    const search = async () => {
       if (searchInput) {
         setSearchResult(await fetchApi(searchInput, searchPage))
       }
     }
-    data()
+    search()
   }, [searchInput, searchPage])
 
   const handleSearch = value => {
@@ -30,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <Finder handleSearch={handleSearch} />
-      <ResultList
+      <MovieList
         searchResult={searchResult}
         handlePage={handlePage}
         searchPage={searchPage}

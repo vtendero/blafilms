@@ -1,6 +1,6 @@
 import placeholderImg from '../images/placeholder.png'
 
-const ResultData = props => {
+const Movie = props => {
   return (
     <>
       <img
@@ -15,4 +15,4 @@ const ResultData = props => {
   )
 }
 
-export default ResultData
+export default Movie

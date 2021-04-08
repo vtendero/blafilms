@@ -1,8 +1,8 @@
-import ResultData from './ResultData'
+import Movie from './Movie'
 import PreviousPage from './PreviousPage'
 import NextPage from './NextPage'
 
-const ResultList = props => {
+const MovieList = props => {
   if (!props.searchResult) {
     return <p>No results yet</p>
   }
@@ -10,7 +10,7 @@ const ResultList = props => {
   const resultItem = props.searchResult.Search.map(result => {
     return (
       <li key={result.imdbID} className="search-item" title={result.Title}>
-        <ResultData result={result} />
+        <Movie result={result} />
       </li>
     )
   })
@@ -32,4 +32,4 @@ const ResultList = props => {
   )
 }
 
-export default ResultList
+export default MovieList
